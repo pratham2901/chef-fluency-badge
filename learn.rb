@@ -14,3 +14,12 @@ file '/var/www/html/index.html' do
 	group 'apache'
 end
 
+file '/etc/motd' do
+	content 'Welcome '
+
+end
+
+execute 'comma-test' do
+	command 'echo Prathamesh >> /etc/motd'
+	only_if 'test -r /etc/motd'
+end
